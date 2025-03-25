@@ -12,7 +12,10 @@ import Link from "next/link";
 import { toast } from "sonner";
 import FormField from "./FormField";
 import { useRouter } from "next/navigation";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "@/firebase/client";
 import { signIn, signUp } from "@/lib/actions/auth.action";
 
@@ -27,8 +30,6 @@ const authFormSchema = (type: FormType) => {
 const AuthForm = ({ type }: { type: FormType }) => {
   const formSchema = authFormSchema(type);
   const router = useRouter();
-
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,17 +39,20 @@ const AuthForm = ({ type }: { type: FormType }) => {
     },
   });
 
-  // 2. Define a submit handler.
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       if (type === "sign-up") {
         const { name, email, password } = values;
+
+        console.log(name, email, password, "values, start creating user");
 
         const userCredentials = await createUserWithEmailAndPassword(
           auth,
           email,
           password
         );
+
+        console.log("user created", userCredentials.user);
 
         const result = await signUp({
           uid: userCredentials.user.uid,
@@ -67,7 +71,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
       } else {
         const { email, password } = values;
 
-        const userCredentials = await createUserWithEmailAndPassword(
+        const userCredentials = await signInWithEmailAndPassword(
           auth,
           email,
           password
@@ -83,7 +87,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
         await signIn({ email, idToken });
 
         toast.success("Sign in successful!");
-        console.log("sign-in", values);
+        router.push("/");
       }
     } catch (error) {
       console.log(error);
