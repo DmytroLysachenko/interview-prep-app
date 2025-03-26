@@ -6,16 +6,6 @@ import { generateText } from "ai";
 export const POST = async (request: Request) => {
   const { type, role, level, techstack, amount, userid } = await request.json();
 
-  console.log(
-    "DATA sent to api:",
-    type,
-    role,
-    level,
-    techstack,
-    amount,
-    userid
-  );
-
   try {
     const { text: questions } = await generateText({
       model: google("gemini-2.0-flash-001"),
@@ -32,7 +22,6 @@ export const POST = async (request: Request) => {
     `,
     });
 
-    console.log("Questions generated:", questions);
     const interview = {
       role,
       type,
@@ -43,8 +32,6 @@ export const POST = async (request: Request) => {
       cover: getRandomInterviewCover(),
       createdAt: new Date().toISOString(),
     };
-
-    console.log("Interview created:", interview);
 
     await db.collection("interviews").add(interview);
 

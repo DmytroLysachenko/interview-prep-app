@@ -14,7 +14,7 @@ const DisplayTechIcons = async ({ techStack }: TechIconProps) => {
           )}
           key={tech}
         >
-          <span>{tech}</span>
+          <span className="tech-tooltip">{tech}</span>
           <Image
             src={url}
             alt={tech}
