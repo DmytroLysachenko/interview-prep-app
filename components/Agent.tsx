@@ -42,7 +42,7 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
     const onSpeechStart = () => setIsSpeaking(true);
     const onSpeechEnd = () => setIsSpeaking(false);
 
-    const onError = (error) => console.log("Error:", error);
+    const onError = (error: any) => console.log("Error:", error);
 
     vapi.on("call-start", onCallStart);
     vapi.on("call-end", onCallEnd);
