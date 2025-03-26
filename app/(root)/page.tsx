@@ -1,5 +1,6 @@
 import InterviewCard from "@/components/InterviewCard";
 import { Button } from "@/components/ui/button";
+import { dummyInterviews } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -34,10 +35,10 @@ const HomePage = () => {
         <h2>Your Interviews</h2>
 
         <div className="interviews-section">
-          {interviewCovers.map((interview) => (
+          {dummyInterviews.map((interview) => (
             <InterviewCard
               {...interview}
-              key={interview.Id}
+              key={interview.id}
             />
           ))}
           <p>You haven&apos;t scheduled any interviews yet</p>
