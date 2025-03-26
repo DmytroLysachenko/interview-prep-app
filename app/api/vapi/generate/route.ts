@@ -3,12 +3,18 @@ import { getRandomInterviewCover } from "@/lib/utils";
 import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
 
-export const GET = async () => {
-  return Response.json({ hello: "world" }, { status: 200 });
-};
-
 export const POST = async (request: Request) => {
   const { type, role, level, techstack, amount, userid } = await request.json();
+
+  console.log(
+    "DATA sent to api:",
+    type,
+    role,
+    level,
+    techstack,
+    amount,
+    userid
+  );
 
   try {
     const { text: questions } = await generateText({
@@ -26,6 +32,7 @@ export const POST = async (request: Request) => {
     `,
     });
 
+    console.log("Questions generated:", questions);
     const interview = {
       role,
       type,
@@ -37,6 +44,8 @@ export const POST = async (request: Request) => {
       createdAt: new Date().toISOString(),
     };
 
+    console.log("Interview created:", interview);
+
     await db.collection("interviews").add(interview);
 
     return Response.json({ success: true }, { status: 200 });
@@ -45,5 +54,4 @@ export const POST = async (request: Request) => {
 
     return Response.json({ success: false, error }, { status: 500 });
   }
-  return Response.json({ hello: "world" }, { status: 200 });
 };
