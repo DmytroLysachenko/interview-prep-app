@@ -7,7 +7,7 @@ import Link from "next/link";
 import DisplayTechIcons from "./DisplayTechIcons";
 
 const InterviewCard = ({
-  interviewId,
+  id,
   userId,
   role,
   type,
@@ -58,23 +58,19 @@ const InterviewCard = ({
           {feedback?.finalAssessment ||
             "You haven't taken the interview yet. Take it to improve your skills."}
         </p>
-      </div>
-      <div className="flex flex-row justify-between">
-        <DisplayTechIcons techStack={techstack} />
-        <Button
-          className="btn-primary"
-          asChild
-        >
-          <Link
-            href={
-              feedback
-                ? `/interview/${interviewId}/feedback`
-                : `/interview/${interviewId}`
-            }
+        <div className="flex flex-row justify-between">
+          <DisplayTechIcons techStack={techstack} />
+          <Button
+            className="btn-primary"
+            asChild
           >
-            {feedback ? "Check Feedback" : "Take Interview"}
-          </Link>
-        </Button>
+            <Link
+              href={feedback ? `/interview/${id}/feedback` : `/interview/${id}`}
+            >
+              {feedback ? "Check Feedback" : "Take Interview"}
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   );
