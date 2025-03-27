@@ -44,15 +44,11 @@ const AuthForm = ({ type }: { type: FormType }) => {
       if (type === "sign-up") {
         const { name, email, password } = values;
 
-        console.log(name, email, password, "values, start creating user");
-
         const userCredentials = await createUserWithEmailAndPassword(
           auth,
           email,
           password
         );
-
-        console.log("user created", userCredentials.user);
 
         const result = await signUp({
           uid: userCredentials.user.uid,
