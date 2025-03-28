@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# InterPrep
 
-## Getting Started
+InterPrep is an AI-powered platform designed to help users prepare for technical interviews. It simulates real interview scenarios using advanced AI models, provides real-time voice interaction, and delivers comprehensive feedback to enhance your preparation process.
 
-First, run the development server:
+## 🚀 Features
+
+- **AI-Powered Interviews**: Simulate real technical interviews with AI-generated questions and feedback.
+- **Real-Time Voice Interaction**: Utilize voice-based conversations powered by Vapi for a realistic interview experience.
+- **Personalized Feedback**: Receive AI-generated feedback on your responses for continuous improvement.
+- **Secure Authentication**: Firebase-based authentication for secure sign-up and sign-in.
+- **Modern UI**: Clean and responsive UI built with ShadCN and Tailwind CSS.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js (with TypeScript)
+- **UI**: ShadCN UI, Tailwind CSS
+- **AI Models**: Gemini (via AI SDK)
+- **Voice/Transcription**: Vapi (real-time streaming)
+- **Authentication & Database**: Firebase
+
+## 🔄 Workflow
+
+1. **Authentication**: Users sign in/up via Firebase authentication.
+2. **Interview Generation**: Vapi initiates the first call to generate the interview session.
+3. **Question Creation**: Gemini AI generates tailored interview questions.
+4. **Interaction**: Users answer questions via real-time voice or text.
+5. **Feedback**: AI processes responses to generate personalized feedback based on the provided schema.
+
+## 📦 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/DmytroLysachenko/interview-prep-app.git
+cd interview-prep-app
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up environment variables:
+
+Create a `.env` file and populate it with the following:
+
+```bash
+FIREBASE_PROJECT_ID=
+FIREBASE_PRIVATE_KEY=
+FIREBASE_CLIENT_EMAIL=
+
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=
+
+GOOGLE_GENERATIVE_AI_API_KEY=
+
+NEXT_PUBLIC_VAPI_WEB_TOKEN=
+NEXT_PUBLIC_VAPI_WORKFLOW_ID=
+```
+
+## ▶️ Running the App
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build for production:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start the production server:
 
-## Learn More
+```bash
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## ✅ Linting
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Ensure code quality by running:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint
+```
 
-## Deploy on Vercel
+## 📊 Dependencies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Key packages used in the project:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `next` (15.x)
+- `react` (19.x)
+- `firebase` (11.x)
+- `@ai-sdk/google` (1.x)
+- `@vapi-ai/web` (2.x)
+- `react-hook-form` (7.x)
+- `tailwindcss` (4.x)
+
+---
+
+📧 Contact
+
+If you have any questions or feedback, feel free to reach out:
+
+Email: [dlysachenko98@gmail.com](mailto:dlysachenko98@gmail.com)
+
+GitHub: [Dmytro Lysachenko](https://github.com/DmytroLysachenko)
+
+---
+
+Built with ❤️ using Next.js.
