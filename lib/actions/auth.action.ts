@@ -1,6 +1,7 @@
 "use server";
 
 import { auth, db } from "@/firebase/admin";
+import { FirebaseError } from "firebase/app";
 import { cookies } from "next/headers";
 
 const EXPIRE_PERIOD = 60 * 60 * 24 * 5;
@@ -26,14 +27,15 @@ export const signUp = async (params: SignUpParams) => {
       success: true,
       message: "Sign up successful! Please sign in.",
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(error);
-
-    if (error.code === "auth/email-already-exists") {
-      return {
-        success: false,
-        message: "This email already in use.",
-      };
+    if (error instanceof FirebaseError) {
+      if (error.code === "auth/email-already-exists") {
+        return {
+          success: false,
+          message: "This email already in use.",
+        };
+      }
     }
 
     return {
@@ -72,7 +74,7 @@ export const signIn = async (params: SignInParams) => {
     }
 
     await setSessionCookie(idToken);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(error);
 
     return {
@@ -123,7 +125,7 @@ export const getCurrentUser = async (): Promise<User | null> => {
 
       id: userRecord.id,
     } as User;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in getCurrentUser:", error);
 
     return null;

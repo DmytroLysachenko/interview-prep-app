@@ -13,15 +13,16 @@ import React from "react";
 const Page = async ({ params }: RouteParams) => {
   const { id } = await params;
 
-  const user = await getCurrentUser();
+  const [user, interview] = await Promise.all([
+    getCurrentUser(),
+    getInterviewById(id!),
+  ]);
 
-  const interview = await getInterviewById(id!);
-
-  if (!interview) redirect("/");
+  if (!interview || !user) redirect("/");
 
   const feedback = await getFeedbackByInterviewId({
     interviewId: id!,
-    userId: user?.id!,
+    userId: user?.id,
   });
 
   const formattedDate =

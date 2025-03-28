@@ -51,7 +51,7 @@ const Agent = ({
     const onSpeechStart = () => setIsSpeaking(true);
     const onSpeechEnd = () => setIsSpeaking(false);
 
-    const onError = (error: any) => console.log("Error:", error);
+    const onError = (error: unknown) => console.log("Error:", error);
 
     vapi.on("call-start", onCallStart);
     vapi.on("call-end", onCallEnd);
@@ -117,7 +117,9 @@ const Agent = ({
             .join("\n");
         }
 
-        await vapi.start(interviewer);
+        await vapi.start(interviewer, {
+          variableValues: { questions: formattedQuestions },
+        });
       }
     } catch (error) {
       console.log("Error:", error);
