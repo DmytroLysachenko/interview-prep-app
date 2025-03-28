@@ -28,6 +28,7 @@ const Agent = ({
   questions,
 }: AgentProps) => {
   const router = useRouter();
+  console.log(interviewId);
 
   const [isSpeaking, setIsSpeaking] = useState(false);
 

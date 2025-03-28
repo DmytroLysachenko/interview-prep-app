@@ -5,8 +5,9 @@ import { getRandomInterviewCover } from "@/lib/utils";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import DisplayTechIcons from "./DisplayTechIcons";
+import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
 
-const InterviewCard = ({
+const InterviewCard = async ({
   id,
   userId,
   role,
@@ -14,7 +15,10 @@ const InterviewCard = ({
   techstack,
   createdAt,
 }: InterviewCardProps) => {
-  const feedback = null as Feedback | null;
+  const feedback = await getFeedbackByInterviewId({
+    interviewId: id,
+    userId: userId!,
+  });
   const normalizedType = /mix/gi.test(type) ? "Mixed" : type;
   const formattedDate = dayjs(createdAt).format("MMM D, YYYY");
   return (
@@ -44,7 +48,7 @@ const InterviewCard = ({
             />
             <p>{formattedDate}</p>
           </div>
-          <div className="flext flex-row gap-2 items-center">
+          <div className="flex flex-row gap-2 items-center ">
             <Image
               src={"/star.svg"}
               alt="star"
