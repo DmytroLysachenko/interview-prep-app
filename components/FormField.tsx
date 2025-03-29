@@ -1,5 +1,6 @@
 import React from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
+
 import {
   FormControl,
   FormItem,
@@ -29,6 +30,7 @@ const FormField = <T extends FieldValues>({
     render={({ field }) => (
       <FormItem>
         <FormLabel className="label">{label}</FormLabel>
+
         <FormControl>
           <Input
             className="input"
@@ -37,6 +39,7 @@ const FormField = <T extends FieldValues>({
             {...field}
           />
         </FormControl>
+
         <FormMessage />
       </FormItem>
     )}

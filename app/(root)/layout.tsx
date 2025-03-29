@@ -1,8 +1,9 @@
-import { isAuthenticated } from "@/lib/actions/auth.action";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
+
+import { isAuthenticated } from "@/lib/actions/auth.action";
 
 const RootLayout = async ({
   children,
@@ -23,6 +24,7 @@ const RootLayout = async ({
             width={38}
             height={32}
           />
+
           <h2 className="text-primary-100">InterPrep</h2>
         </Link>
       </nav>

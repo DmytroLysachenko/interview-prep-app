@@ -1,14 +1,15 @@
+import dayjs from "dayjs";
+import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import React from "react";
+
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/actions/auth.action";
 import {
   getFeedbackByInterviewId,
   getInterviewById,
 } from "@/lib/actions/general.action";
-import dayjs from "dayjs";
-import Image from "next/image";
-import Link from "next/link";
-import { redirect } from "next/navigation";
-import React from "react";
 
 const Page = async ({ params }: RouteParams) => {
   const { id } = await params;
@@ -36,6 +37,7 @@ const Page = async ({ params }: RouteParams) => {
           <span className="capitalize">{interview.role}</span> Interview
         </h1>
       </div>
+
       <div className="flex flex-row gap-10 justify-center">
         <div className="flex flex-row gap-1">
           <Image
@@ -45,6 +47,7 @@ const Page = async ({ params }: RouteParams) => {
             height={24}
             className=""
           />
+
           <p className="text-2xl">
             Overall Impression:{" "}
             <span className="font-semibold text-primary-200">
@@ -53,6 +56,7 @@ const Page = async ({ params }: RouteParams) => {
             /100
           </p>
         </div>
+
         <div className="flex flex-row gap-1">
           <Image
             src="/calendar.svg"
@@ -60,9 +64,11 @@ const Page = async ({ params }: RouteParams) => {
             width={24}
             height={24}
           />
+
           <p className="text-2xl">{formattedDate}</p>
         </div>
       </div>
+
       <hr />
 
       <p>{feedback?.finalAssessment}</p>
@@ -83,6 +89,7 @@ const Page = async ({ params }: RouteParams) => {
 
       <div className="flex flex-col gap-3">
         <h3>Strengths:</h3>
+
         <ul>
           {feedback?.strengths.map((strength, index) => (
             <li key={index}>{strength}</li>
@@ -92,6 +99,7 @@ const Page = async ({ params }: RouteParams) => {
 
       <div className="flex flex-col gap-3">
         <h3>Areas for Improvements:</h3>
+
         <ul>
           {feedback?.areasForImprovement?.map((area, index) => (
             <li key={index}>{area}</li>

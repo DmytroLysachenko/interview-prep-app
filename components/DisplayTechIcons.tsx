@@ -1,6 +1,7 @@
-import { cn, getTechLogos } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
+
+import { cn, getTechLogos } from "@/lib/utils";
 
 const DisplayTechIcons = async ({ techStack }: TechIconProps) => {
   const techIcons = await getTechLogos(techStack);
@@ -15,6 +16,7 @@ const DisplayTechIcons = async ({ techStack }: TechIconProps) => {
           key={tech}
         >
           <span className="tech-tooltip">{tech}</span>
+
           <Image
             src={url}
             alt={tech}

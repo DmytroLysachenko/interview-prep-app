@@ -1,3 +1,8 @@
+import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import React from "react";
+
 import InterviewCard from "@/components/InterviewCard";
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/actions/auth.action";
@@ -5,10 +10,6 @@ import {
   getInterviewsByUserId,
   getLatestInterviews,
 } from "@/lib/actions/general.action";
-import Image from "next/image";
-import Link from "next/link";
-import { redirect } from "next/navigation";
-import React from "react";
 
 const HomePage = async () => {
   const user = await getCurrentUser();
@@ -29,10 +30,12 @@ const HomePage = async () => {
       <section className="card-cta">
         <div className="flex flex-col gap-6 max-w-lg">
           <h2>Get Interview-Ready with AI-Powered practice and feedback</h2>
+
           <p className="text-lg">
             Practice on real interview questions and get instant feedback on
             your performance.
           </p>
+
           <Button
             asChild
             className="btn-primary max-sm:w-full"
@@ -40,6 +43,7 @@ const HomePage = async () => {
             <Link href="/interview">Start Interview</Link>
           </Button>
         </div>
+
         <Image
           src="/robot.png"
           alt="Learning robot"

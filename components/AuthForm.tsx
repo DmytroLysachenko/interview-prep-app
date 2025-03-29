@@ -4,18 +4,18 @@ import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
-import FormField from "./FormField";
 import { useRouter } from "next/navigation";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import FormField from "@/components/FormField";
 import { auth } from "@/firebase/client";
 import { signIn, signUp } from "@/lib/actions/auth.action";
 
@@ -122,6 +122,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 placeholder="Your name"
               />
             )}
+
             <FormField
               control={form.control}
               name="email"
@@ -129,6 +130,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
               placeholder="Your email"
               type="email"
             />
+
             <FormField
               control={form.control}
               name="password"

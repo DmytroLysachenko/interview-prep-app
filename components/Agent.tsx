@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+
 import { interviewer } from "@/constants";
 import { createFeedback } from "@/lib/actions/general.action";
 import { cn } from "@/lib/utils";
 import { vapi } from "@/lib/vapi.sdk";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -28,7 +29,6 @@ const Agent = ({
   questions,
 }: AgentProps) => {
   const router = useRouter();
-  console.log(interviewId);
 
   const [isSpeaking, setIsSpeaking] = useState(false);
 
@@ -153,6 +153,7 @@ const Agent = ({
 
           <h3>AI Interviewer</h3>
         </div>
+
         <div className="card-border">
           <div className="card-content">
             <Image
@@ -162,6 +163,7 @@ const Agent = ({
               height={540}
               className="rounded-full object-cover size-[120px]"
             />
+
             <h3>{userName}</h3>
           </div>
         </div>

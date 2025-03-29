@@ -1,6 +1,7 @@
-import { isAuthenticated } from "@/lib/actions/auth.action";
 import { redirect } from "next/navigation";
 import React from "react";
+
+import { isAuthenticated } from "@/lib/actions/auth.action";
 
 const AuthLayout = async ({
   children,
