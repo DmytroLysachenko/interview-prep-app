@@ -97,6 +97,23 @@ export const mappings = {
   "aws amplify": "amplify",
 };
 
+const voices = [
+  "burt",
+  "marissa",
+  "andrea",
+  "sarah",
+  "philip",
+  "steve",
+  "joseph",
+  "myra",
+  "paula",
+  "ryan",
+  "drew",
+  "paul",
+  "matilda",
+  "mark",
+];
+
 export const interviewer: CreateAssistantDTO = {
   name: "Interviewer",
   firstMessage:
@@ -108,7 +125,7 @@ export const interviewer: CreateAssistantDTO = {
   },
   voice: {
     provider: "11labs",
-    voiceId: "elliot",
+    voiceId: voices[Math.floor(Math.random() * voices.length)],
     stability: 0.4,
     similarityBoost: 0.8,
     speed: 0.9,
