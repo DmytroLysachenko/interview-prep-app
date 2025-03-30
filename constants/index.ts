@@ -118,6 +118,7 @@ export const interviewer: CreateAssistantDTO = {
   name: "Interviewer",
   firstMessage:
     "Hello! Thank you for taking the time to speak with me today. I'm excited to learn more about you and your experience.",
+  maxDurationSeconds: 1800,
   transcriber: {
     provider: "deepgram",
     model: "nova-2",
@@ -128,7 +129,7 @@ export const interviewer: CreateAssistantDTO = {
     voiceId: voices[Math.floor(Math.random() * voices.length)],
     stability: 0.4,
     similarityBoost: 0.8,
-    speed: 0.9,
+    speed: 1,
     style: 0.5,
     useSpeakerBoost: true,
   },
