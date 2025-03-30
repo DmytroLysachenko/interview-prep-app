@@ -79,7 +79,7 @@ const Page = async ({ params }: RouteParams) => {
         {feedback?.categoryScores.map((category, index) => (
           <div key={category.name}>
             <h3>
-              {index + 1}. {category.name} ({category.score}/20)
+              {index + 1}. {category.name} ({category.score}/100)
             </h3>
 
             <p>{category.comment}</p>
