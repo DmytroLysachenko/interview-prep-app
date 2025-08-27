@@ -102,12 +102,18 @@ const Agent = ({
     setCallStatus(CallStatus.CONNECTING);
     try {
       if (type === "generate") {
-        await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
-          variableValues: {
-            userid: userId,
-            username: userName,
-          },
-        });
+        await vapi.start(
+          process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!,
+          undefined,
+          undefined,
+          undefined,
+          {
+            variableValues: {
+              userid: userId,
+              username: userName,
+            },
+          }
+        );
       } else if (type === "interview") {
         let formattedQuestions = "";
 
